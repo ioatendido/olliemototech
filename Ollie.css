@@ -238,6 +238,31 @@ img {
     border-color: var(--white);
 }
 
+.parallax-bg{
+    transition: background-image 1s ease-in-out;
+}
+
+.hero-dots{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.4);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.dot.active{
+    background:white;
+    transform:scale(1.2);
+}
+
 /* --- About Columns --- */
 .unsplash-credit {
     font-size: 14px;

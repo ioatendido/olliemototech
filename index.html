@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="Ollie.css">
     <link rel="icon" href="images/logo.png" type="image/png">
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -36,12 +36,25 @@
 
     <!-- Section 1: Home / Hero -->
     <section id="home" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-01.jpg')"></div>
+        <div id="hero-bg" class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-01.jpg')"></div>
         <div class="parallax-overlay"></div>
+
         <div class="section-content">
             <h1 class="section-title hero-title">WELCOME TO OUR WORKSHOP</h1>
             <p class="section-subtitle caps">QUALITY PERFORMANCE</p>
             <a href="#about" class="btn-scroll">EXPLORE</a>
+
+            <!-- navigation pins -->
+            <div class="hero-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+                <span class="dot" data-index="5"></span>
+                <span class="dot" data-index="6"></span>
+            </div>
+
         </div>
     </section>
 
@@ -144,7 +157,7 @@
                     <a href="https://www.facebook.com/Olliemotosolution" target="_blank" class="contact-btn">
                     <i class="fab fa-facebook-f facebook"></i><span>Ollie Mototech</span></a>
 
-                    <a href="https://maps.app.goo.gl/Mi2R2oXvFBjHA2Ne9?g_st=ic" target="_blank" class="contact-btn">
+                    <a href="https://share.google/knHDg8MRmzcTs1Dcr" target="_blank" class="contact-btn">
                     <i class="fas fa-map-marker-alt map"></i><span>418 Mangga Street Comembo, Taguig city</span></a>
 
                     <a href="tel:+639184547795" class="contact-btn"><i class="fas fa-phone phone"></i>
@@ -173,7 +186,50 @@
         <p>Copyright &copy; 2026 Ollie Mototech. Designed by <a href="https://www.facebook.com/ian.oliver.ii" rel="nofollow" target="_blank">OLLIE</a></p>
     </footer>
     <script src="templatemo-parallax-script.js"></script>
+
+    <script>
+
+        const images = [
+        "images/parallax-bg-01.jpg",
+        "images/parallax-bg-012.jpg",
+        "images/parallax-bg-013.jpg",
+        "images/parallax-bg-014.jpg",
+        "images/parallax-bg-016.jpg",
+        "images/parallax-bg-017.jpg",
+        "images/parallax-bg-018.jpg"
+        ];
+
+        let current = 0;
+        const bg = document.getElementById("hero-bg");
+        const dots = document.querySelectorAll(".dot");
+
+        function updateBackground(){
+
+            bg.style.backgroundImage = "url('" + images[current] + "')";
+
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[current].classList.add("active");
+        }
+
+        function nextImage(){
+            current++;
+            if(current >= images.length){
+                current = 0;
+            }
+            updateBackground();
+        }
+
+        setInterval(nextImage, 2500); // loop every 5s
+
+        // dot click
+        dots.forEach(dot=>{
+            dot.addEventListener("click", function(){
+                current = parseInt(this.dataset.index);
+                updateBackground();
+            });
+        });
+
+    </script>
+
 </body>
-
 </html>
-
